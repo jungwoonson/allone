@@ -1,6 +1,6 @@
-package live.allone.scraper.mock;
+package live.allone.hospital.mock;
 
-import live.allone.scraper.application.dto.HospitalRequest;
+import live.allone.hospital.application.dto.HospitalRequest;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -26,7 +26,7 @@ public class HospitalApiMockController {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
 
-        Resource resource = new ClassPathResource("hospitals-sample.xml");
+        Resource resource = new ClassPathResource("hospitals-updated.xml");
         Path filePath = resource.getFile().toPath();
 
         byte[] xmlBytes = Files.readAllBytes(filePath);

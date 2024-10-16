@@ -34,6 +34,7 @@ dependencies {
     runtimeOnly("org.postgresql:postgresql")
     annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 

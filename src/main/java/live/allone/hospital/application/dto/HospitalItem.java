@@ -1,14 +1,19 @@
-package live.allone.scraper.application.dto;
+package live.allone.hospital.application.dto;
 
+import live.allone.hospital.domain.Emergency;
+import live.allone.hospital.domain.Hospital;
+import live.allone.hospital.domain.OperatingHour;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @NoArgsConstructor
+@ToString
 public class HospitalItem {
 
     private String rnum; // 일련번호
-    private String autyAddr; // 주소
+    private String dutyAddr; // 주소
     private String dutyDiv; // 병원분류
     private String dutyDivNam; // 병원분류명
     private String dutyEmcls; // 응급의료기관코드
@@ -41,4 +46,55 @@ public class HospitalItem {
     private String postCdn2; // 우편번호2
     private String wgs84Lon; // 병원경도
     private String wgs84Lat; // 병원위도
+
+    public Hospital createHospital(Long id) {
+        return Hospital.builder()
+            .id(id)
+            .hospitalId(hpid)
+            .name(dutyName)
+            .phoneNumber(dutyTel1)
+            .address(dutyAddr)
+            .typeCode(dutyDiv)
+            .typeName(dutyDivNam)
+            .latitude(wgs84Lat)
+            .longitude(wgs84Lon)
+            .description(dutyInf)
+            .note(dutyEtc)
+            .sketchMap(dutyMapimg)
+            .postCode1(postCdn1)
+            .postCode2(postCdn2)
+            .emergency(buildEmergency())
+            .operatingHour(buildOperatingHour())
+            .build();
+    }
+
+    private Emergency buildEmergency() {
+        return Emergency.builder()
+            .emergencyInstitutionCode(dutyEmcls)
+            .emergencyInstitutionName(dutyEmclsName)
+            .emergencyServiceStatus(dutyEryn)
+            .emergencyPhoneNumber(dutyTel3)
+            .build();
+    }
+
+    private OperatingHour buildOperatingHour() {
+        return OperatingHour.builder()
+            .monOpen(dutyTime1s)
+            .monClose(dutyTime1c)
+            .tueOpen(dutyTime2s)
+            .tueClose(dutyTime2c)
+            .wedOpen(dutyTime3s)
+            .wedClose(dutyTime3c)
+            .thuOpen(dutyTime4s)
+            .thuClose(dutyTime4c)
+            .friOpen(dutyTime5s)
+            .friClose(dutyTime5c)
+            .satOpen(dutyTime6s)
+            .satClose(dutyTime6c)
+            .sunOpen(dutyTime7s)
+            .sunClose(dutyTime7c)
+            .holidayOpen(dutyTime8s)
+            .holidayClose(dutyTime8c)
+            .build();
+    }
 }

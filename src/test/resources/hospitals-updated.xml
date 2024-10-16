@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<response>
+  <header>
+    <resultCode>00</resultCode>
+    <resultMsg>NORMAL SERVICE.</resultMsg>
+  </header>
+  <body>
+    <items>
+      <item>
+        <dutyAddr>서울특별시 양천구 목동로 203, 4층 (신정동, 로데오빌딩)</dutyAddr>
+        <dutyDiv>C</dutyDiv>
+        <dutyDivNam>의원</dutyDivNam>
+        <dutyEmcls>G099</dutyEmcls>
+        <dutyEmclsName>응급의료기관 이외</dutyEmclsName>
+        <dutyEryn>2</dutyEryn>
+        <dutyName>송주연정신건강의학과의원</dutyName>
+        <dutyTel1>02-2605-1005</dutyTel1>
+        <dutyTime1c>1900</dutyTime1c>
+        <dutyTime1s>1000</dutyTime1s>
+        <dutyTime2c>1900</dutyTime2c>
+        <dutyTime2s>1000</dutyTime2s>
+        <dutyTime3c>1900</dutyTime3c>
+        <dutyTime3s>1000</dutyTime3s>
+        <dutyTime4c>1900</dutyTime4c>
+        <dutyTime4s>1000</dutyTime4s>
+        <dutyTime5c>1900</dutyTime5c>
+        <dutyTime5s>1000</dutyTime5s>
+        <dutyTime6c>1400</dutyTime6c>
+        <dutyTime6s>1000</dutyTime6s>
+        <hpid>A1117692</hpid>
+        <postCdn1>079</postCdn1>
+        <postCdn2>38</postCdn2>
+        <rnum>1</rnum>
+        <wgs84Lat>37.526705407963654</wgs84Lat>
+        <wgs84Lon>126.86380518096868</wgs84Lon>
+      </item>
+      <item>
+        <dutyAddr>서울특별시 양천구 오목로 326, 4층 (목동)</dutyAddr>
+        <dutyDiv>N</dutyDiv>
+        <dutyDivNam>치과의원</dutyDivNam>
+        <dutyEmcls>G099</dutyEmcls>
+        <dutyEmclsName>응급의료기관 이외</dutyEmclsName>
+        <dutyEryn>2</dutyEryn>
+        <dutyEtc>평일 점심시간 13:00~14:00
+          매주 토요일 , 일요일 / 공휴일 휴진
+        </dutyEtc>
+        <dutyInf>가족을 진료하는 마음으로 정성을 다하는 유디치과의원 오목교점입니다.
+
+          오시는 길
+          지하철 5호선 오목교역 8번 출구
+
+          건물 뒤편 공터 주차가능
+        </dutyInf>
+        <dutyMapimg>오목교역 8번 출구</dutyMapimg>
+        <dutyName>유디치과의원</dutyName>
+        <dutyTel1>02-2643-8819</dutyTel1>
+        <dutyTime1c>1830</dutyTime1c>
+        <dutyTime1s>0930</dutyTime1s>
+        <dutyTime2c>1830</dutyTime2c>
+        <dutyTime2s>0930</dutyTime2s>
+        <dutyTime3c>1830</dutyTime3c>
+        <dutyTime3s>0930</dutyTime3s>
+        <dutyTime4c>1830</dutyTime4c>
+        <dutyTime4s>0930</dutyTime4s>
+        <dutyTime5c>1830</dutyTime5c>
+        <dutyTime5s>0930</dutyTime5s>
+        <hpid>A1117706</hpid>
+        <postCdn1>080</postCdn1>
+        <postCdn2>06</postCdn2>
+        <rnum>2</rnum>
+        <wgs84Lat>37.5244897119312</wgs84Lat>
+        <wgs84Lon>126.873572139057</wgs84Lon>
+      </item>
+      <item>
+        <dutyAddr>서울특별시 양천구 목동로 201, 3층(신정동,한성빌딩)</dutyAddr>
+        <dutyDiv>C</dutyDiv>
+        <dutyDivNam>의원</dutyDivNam>
+        <dutyEmcls>G099</dutyEmcls>
+        <dutyEmclsName>응급의료기관 이외</dutyEmclsName>
+        <dutyEryn>2</dutyEryn>
+        <dutyEtc>평일 휴게시간 13:00~14:00
+          접수마감 12:30, 17:30
+        </dutyEtc>
+        <dutyMapimg>목동역 2번출구, KEB하나은행 목동역지점 건물</dutyMapimg>
+        <dutyName>양천이비인후과의원</dutyName>
+        <dutyTel1>02-2690-6789</dutyTel1>
+        <dutyTime1c>1800</dutyTime1c>
+        <dutyTime1s>0930</dutyTime1s>
+        <dutyTime2c>1800</dutyTime2c>
+        <dutyTime2s>0930</dutyTime2s>
+        <dutyTime3c>1300</dutyTime3c>
+        <dutyTime3s>0930</dutyTime3s>
+        <dutyTime4c>1800</dutyTime4c>
+        <dutyTime4s>0930</dutyTime4s>
+        <dutyTime5c>1800</dutyTime5c>
+        <dutyTime5s>0930</dutyTime5s>
+        <dutyTime6c>1330</dutyTime6c>
+        <dutyTime6s>0930</dutyTime6s>
+        <hpid>A1101509</hpid>
+        <postCdn1>079</postCdn1>
+        <postCdn2>38</postCdn2>
+        <rnum>3</rnum>
+        <wgs84Lat>37.52639560942719</wgs84Lat>
+        <wgs84Lon>126.86393699482306</wgs84Lon>
+      </item>
+      <item>
+        <dutyAddr>서울특별시 양천구 오목로 321-1, 서경빌딩 3층 (목동)</dutyAddr>
+        <dutyDiv>C</dutyDiv>
+        <dutyDivNam>의원</dutyDivNam>
+        <dutyEmcls>G099</dutyEmcls>
+        <dutyEmclsName>응급의료기관 이외</dutyEmclsName>
+        <dutyEryn>2</dutyEryn>
+        <dutyEtc>3째주 토요일 휴진/점심시간 13:00~14:00</dutyEtc>
+        <dutyMapimg>오목교역 1번 출구 NH농협은행 옆</dutyMapimg>
+        <dutyName>박주진산부인과의원</dutyName>
+        <dutyTel1>02-2653-0098</dutyTel1>
+        <dutyTime1c>1830</dutyTime1c>
+        <dutyTime1s>0930</dutyTime1s>
+        <dutyTime2c>1830</dutyTime2c>
+        <dutyTime2s>0930</dutyTime2s>
+        <dutyTime3c>1830</dutyTime3c>
+        <dutyTime3s>0930</dutyTime3s>
+        <dutyTime4c>1830</dutyTime4c>
+        <dutyTime4s>0930</dutyTime4s>
+        <dutyTime5c>1830</dutyTime5c>
+        <dutyTime5s>0930</dutyTime5s>
+        <dutyTime6c>1300</dutyTime6c>
+        <dutyTime6s>0930</dutyTime6s>
+        <hpid>A1101517</hpid>
+        <postCdn1>080</postCdn1>
+        <postCdn2>00</postCdn2>
+        <rnum>4</rnum>
+        <wgs84Lat>37.5252739014686</wgs84Lat>
+        <wgs84Lon>126.873112535425</wgs84Lon>
+      </item>
+      <item>
+        <dutyAddr>서울 양천구 중앙로32길 61 , 현대플라자 305호 (신정동)</dutyAddr>
+        <dutyDiv>C</dutyDiv>
+        <dutyDivNam>의원</dutyDivNam>
+        <dutyEmcls>G099</dutyEmcls>
+        <dutyEmclsName>응급의료기관 이외</dutyEmclsName>
+        <dutyEryn>2</dutyEryn>
+        <dutyEtc>점심시간 13:00-14:00
+          일요일 및 공휴일 휴진
+        </dutyEtc>
+        <dutyMapimg>서울신서초등학교 인근, 신정1지구대 옆</dutyMapimg>
+        <dutyName>강정수이비인후과의원</dutyName>
+        <dutyTel1>02-2654-9090</dutyTel1>
+        <dutyTime1c>1800</dutyTime1c>
+        <dutyTime1s>0900</dutyTime1s>
+        <dutyTime2c>1800</dutyTime2c>
+        <dutyTime2s>0900</dutyTime2s>
+        <dutyTime3c>1800</dutyTime3c>
+        <dutyTime3s>0900</dutyTime3s>
+        <dutyTime4c>1800</dutyTime4c>
+        <dutyTime4s>0900</dutyTime4s>
+        <dutyTime5c>1800</dutyTime5c>
+        <dutyTime5s>0900</dutyTime5s>
+        <dutyTime6c>1300</dutyTime6c>
+        <dutyTime6s>0900</dutyTime6s>
+        <hpid>A1101567</hpid>
+        <postCdn1>080</postCdn1>
+        <postCdn2>87</postCdn2>
+        <rnum>5</rnum>
+        <wgs84Lat>37.5200828278632</wgs84Lat>
+        <wgs84Lon>126.860302811899</wgs84Lon>
+      </item>
+      <item>
+        <dutyAddr>서울특별시 성동구 아차산로 92, 광명타워 3층 (성수동2가)</dutyAddr>
+        <dutyDiv>C</dutyDiv>
+        <dutyDivNam>의원</dutyDivNam>
+        <dutyEmcls>G099</dutyEmcls>
+        <dutyEmclsName>응급의료기관 이외</dutyEmclsName>
+        <dutyEryn>2</dutyEryn>
+        <dutyEtc>수요일 단축진료
+          평일 휴게시간 13:00~14:00
+        </dutyEtc>
+        <dutyName>성수탑내과의원</dutyName>
+        <dutyTel1>02-466-1275</dutyTel1>
+        <dutyTime1c>1830</dutyTime1c>
+        <dutyTime1s>0900</dutyTime1s>
+        <dutyTime2c>1830</dutyTime2c>
+        <dutyTime2s>0900</dutyTime2s>
+        <dutyTime3c>1300</dutyTime3c>
+        <dutyTime3s>0900</dutyTime3s>
+        <dutyTime4c>1830</dutyTime4c>
+        <dutyTime4s>0900</dutyTime4s>
+        <dutyTime5c>1830</dutyTime5c>
+        <dutyTime5s>0900</dutyTime5s>
+        <dutyTime6c>1300</dutyTime6c>
+        <dutyTime6s>0900</dutyTime6s>
+        <hpid>A1120514</hpid>
+        <postCdn1>047</postCdn1>
+        <postCdn2>82</postCdn2>
+        <rnum>6</rnum>
+        <wgs84Lat>37.5447518472</wgs84Lat>
+        <wgs84Lon>127.0542430278</wgs84Lon>
+      </item>
+      <item>
+        <dutyAddr>서울특별시 양천구 목동서로 37, 201호 (목동, 하이베라스)</dutyAddr>
+        <dutyDiv>C</dutyDiv>
+        <dutyDivNam>의원</dutyDivNam>
+        <dutyEmcls>G099</dutyEmcls>
+        <dutyEmclsName>응급의료기관 이외</dutyEmclsName>
+        <dutyEryn>2</dutyEryn>
+        <dutyEtc>점심시간 13:00~14:00</dutyEtc>
+        <dutyMapimg>월촌중학교 옆 하이베라스</dutyMapimg>
+        <dutyName>함춘내과의원</dutyName>
+        <dutyTel1>02-2646-6318</dutyTel1>
+        <dutyTime1c>1830</dutyTime1c>
+        <dutyTime1s>0900</dutyTime1s>
+        <dutyTime2c>1830</dutyTime2c>
+        <dutyTime2s>0900</dutyTime2s>
+        <dutyTime4c>1830</dutyTime4c>
+        <dutyTime4s>0900</dutyTime4s>
+        <dutyTime5c>1830</dutyTime5c>
+        <dutyTime5s>0900</dutyTime5s>
+        <dutyTime6c>1400</dutyTime6c>
+        <dutyTime6s>0900</dutyTime6s>
+        <hpid>A1118954</hpid>
+        <postCdn1>079</postCdn1>
+        <postCdn2>84</postCdn2>
+        <rnum>7</rnum>
+        <wgs84Lat>37.5374776528581</wgs84Lat>
+        <wgs84Lon>126.88167161741</wgs84Lon>
+      </item>
+      <item>
+        <dutyAddr>서울 양천구 오목로 299 (목동, 목동트라팰리스)</dutyAddr>
+        <dutyDiv>C</dutyDiv>
+        <dutyDivNam>의원</dutyDivNam>
+        <dutyEmcls>G099</dutyEmcls>
+        <dutyEmclsName>응급의료기관 이외</dutyEmclsName>
+        <dutyEryn>2</dutyEryn>
+        <dutyEtc>점심시간 13:00~14:00</dutyEtc>
+        <dutyMapimg>오목교 1번출구 이마트쪽</dutyMapimg>
+        <dutyName>목동정형외과의원</dutyName>
+        <dutyTel1>02-2062-0507</dutyTel1>
+        <dutyTime1c>1900</dutyTime1c>
+        <dutyTime1s>0900</dutyTime1s>
+        <dutyTime2c>1900</dutyTime2c>
+        <dutyTime2s>0900</dutyTime2s>
+        <dutyTime3c>1400</dutyTime3c>
+        <dutyTime3s>0900</dutyTime3s>
+        <dutyTime4c>1900</dutyTime4c>
+        <dutyTime4s>0900</dutyTime4s>
+        <dutyTime5c>1900</dutyTime5c>
+        <dutyTime5s>0900</dutyTime5s>
+        <dutyTime6c>1400</dutyTime6c>
+        <dutyTime6s>0900</dutyTime6s>
+        <hpid>A1119073</hpid>
+        <postCdn1>080</postCdn1>
+        <postCdn2>01</postCdn2>
+        <rnum>8</rnum>
+        <wgs84Lat>37.5260837006075</wgs84Lat>
+        <wgs84Lon>126.87035534357</wgs84Lon>
+      </item>
+      <item>
+        <dutyAddr>서울특별시 양천구 등촌로 30, 3층 (목동)</dutyAddr>
+        <dutyDiv>N</dutyDiv>
+        <dutyDivNam>치과의원</dutyDivNam>
+        <dutyEmcls>G099</dutyEmcls>
+        <dutyEmclsName>응급의료기관 이외</dutyEmclsName>
+        <dutyEryn>2</dutyEryn>
+        <dutyEtc>점심시간 13:00~14:00</dutyEtc>
+        <dutyName>박영수치과의원수정된이름</dutyName>
+        <dutyTel1>02-2643-0889</dutyTel1>
+        <dutyTime1c>1800</dutyTime1c>
+        <dutyTime1s>0930</dutyTime1s>
+        <dutyTime2c>1800</dutyTime2c>
+        <dutyTime2s>0930</dutyTime2s>
+        <dutyTime3c>1800</dutyTime3c>
+        <dutyTime3s>0930</dutyTime3s>
+        <dutyTime4c>1800</dutyTime4c>
+        <dutyTime4s>0930</dutyTime4s>
+        <dutyTime5c>1800</dutyTime5c>
+        <dutyTime5s>0930</dutyTime5s>
+        <dutyTime6c>1300</dutyTime6c>
+        <dutyTime6s>0930</dutyTime6s>
+        <hpid>A1119170</hpid>
+        <postCdn1>079</postCdn1>
+        <postCdn2>65</postCdn2>
+        <rnum>9</rnum>
+        <wgs84Lat>37.5327150535023</wgs84Lat>
+        <wgs84Lon>126.864091469555</wgs84Lon>
+      </item>
+      <item>
+        <dutyAddr>서울특별시 성북구 성북로4길 52, 417동 2층 1203,1204호 (돈암동, 돈암동 한진, 신안아파트 상가)</dutyAddr>
+        <dutyDiv>N</dutyDiv>
+        <dutyDivNam>치과의원</dutyDivNam>
+        <dutyEmcls>G099</dutyEmcls>
+        <dutyEmclsName>응급의료기관 이외</dutyEmclsName>
+        <dutyEryn>2</dutyEryn>
+        <dutyMapimg>한진,한신@상가 417동2층1203호,1204호(2층)</dutyMapimg>
+        <dutyName>서울필치과의원</dutyName>
+        <dutyTel1>02-953-2827</dutyTel1>
+        <dutyTime1c>1800</dutyTime1c>
+        <dutyTime1s>0930</dutyTime1s>
+        <dutyTime2c>1800</dutyTime2c>
+        <dutyTime2s>0930</dutyTime2s>
+        <dutyTime3c>1800</dutyTime3c>
+        <dutyTime3s>0930</dutyTime3s>
+        <dutyTime4c>1800</dutyTime4c>
+        <dutyTime4s>0930</dutyTime4s>
+        <dutyTime5c>1800</dutyTime5c>
+        <dutyTime5s>0930</dutyTime5s>
+        <dutyTime6c>1400</dutyTime6c>
+        <dutyTime6s>0900</dutyTime6s>
+        <hpid>A1115766</hpid>
+        <postCdn1>028</postCdn1>
+        <postCdn2>31</postCdn2>
+        <rnum>11</rnum>
+        <wgs84Lat>37.5929059279</wgs84Lat>
+        <wgs84Lon>127.0094026242</wgs84Lon>
+      </item>
+    </items>
+    <numOfRows>10</numOfRows>
+    <pageNo>1</pageNo>
+    <totalCount>76830</totalCount>
+  </body>
+</response>

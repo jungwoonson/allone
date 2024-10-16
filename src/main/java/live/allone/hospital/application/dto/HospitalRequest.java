@@ -1,4 +1,4 @@
-package live.allone.scraper.application.dto;
+package live.allone.hospital.application.dto;
 
 import lombok.*;
 
@@ -9,7 +9,7 @@ import lombok.*;
 @Builder
 public class HospitalRequest {
 
-    private int numOfRows = 10;
-    private int pageNo = 1;
+    private int numOfRows;
+    private int pageNo;
     private String serviceKey;
 }

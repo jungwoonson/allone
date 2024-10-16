@@ -1,12 +1,14 @@
-package live.allone.scraper.application.dto;
+package live.allone.hospital.application.dto;
 
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 public class HospitalResponse {
 
     private HospitalHeader header;

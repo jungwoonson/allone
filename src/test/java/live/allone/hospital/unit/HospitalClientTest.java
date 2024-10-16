@@ -1,8 +1,10 @@
-package live.allone.scraper.unit;
+package live.allone.hospital.unit;
 
-import live.allone.scraper.application.HospitalClient;
-import live.allone.scraper.application.dto.HospitalRequest;
-import live.allone.scraper.application.dto.HospitalResponse;
+import java.util.List;
+import live.allone.hospital.application.HospitalClient;
+import live.allone.hospital.application.dto.HospitalItem;
+import live.allone.hospital.application.dto.HospitalRequest;
+import live.allone.hospital.application.dto.HospitalResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +25,17 @@ public class HospitalClientTest {
     @Test
     void requestHospitalsTest() {
         // given
-        HospitalRequest hospitalRequest = new HospitalRequest();
+        HospitalRequest hospitalRequest = HospitalRequest.builder()
+            .serviceKey("test-service-key")
+            .pageNo(1)
+            .numOfRows(10)
+            .build();
 
         // when
         HospitalResponse hospitalResponse = hospitalClient.requestHospitals(hospitalRequest);
 
         // then
-        assertThat(hospitalResponse.getTotalCount()).isEqualTo(4);
+        List<HospitalItem> items = hospitalResponse.getItems();
+        assertThat(items.size()).isEqualTo(10);
     }
 }
