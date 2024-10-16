@@ -17,7 +17,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 @RestController
-public class HospitalController {
+public class HospitalApiMockController {
 
     @GetMapping(value = "/B552657/HsptlAsembySearchService/getHsptlMdcncFullDown", produces = "application/xml")
     public ResponseEntity<byte[]> getHsptlMdcncFullDown(@ModelAttribute HospitalRequest request) throws IOException {
