@@ -25,7 +25,7 @@ public class HospitalService {
         int totalCount = initialResponse.getTotalCount();
         int totalPageLimit = calculateTotalPageLimit(totalCount);
 
-        for (int i = 2; i <= totalPageLimit; i++) {
+        for (int i = 2; i < totalPageLimit; i++) {
             requestAndSaveHospitals(i);
         }
 

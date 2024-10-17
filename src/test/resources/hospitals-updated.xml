@@ -308,13 +308,13 @@
         <hpid>A1115766</hpid>
         <postCdn1>028</postCdn1>
         <postCdn2>31</postCdn2>
-        <rnum>11</rnum>
+        <rnum>10</rnum>
         <wgs84Lat>37.5929059279</wgs84Lat>
         <wgs84Lon>127.0094026242</wgs84Lon>
       </item>
     </items>
     <numOfRows>10</numOfRows>
     <pageNo>1</pageNo>
-    <totalCount>76830</totalCount>
+    <totalCount>10</totalCount>
   </body>
 </response>
