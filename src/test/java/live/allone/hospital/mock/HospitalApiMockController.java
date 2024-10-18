@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
@@ -20,8 +21,7 @@ import java.nio.file.Path;
 public class HospitalApiMockController {
 
     @GetMapping(value = "/B552657/HsptlAsembySearchService/getHsptlMdcncFullDown", produces = "application/xml")
-    public ResponseEntity<byte[]> getHsptlMdcncFullDown(@ModelAttribute HospitalRequest request) throws IOException {
-        String serviceKey = request.getServiceKey();
+    public ResponseEntity<byte[]> getHsptlMdcncFullDown(@ModelAttribute HospitalRequest request, @RequestParam String serviceKey) throws IOException {
         if (!StringUtils.hasText(serviceKey)) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }

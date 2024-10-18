@@ -26,7 +26,6 @@ public class HospitalClientTest {
     void requestHospitalsTest() {
         // given
         HospitalRequest hospitalRequest = HospitalRequest.builder()
-            .serviceKey("test-service-key")
             .pageNo(1)
             .numOfRows(10)
             .build();

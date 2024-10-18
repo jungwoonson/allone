@@ -9,11 +9,9 @@ import org.springframework.stereotype.Service;
 public class HospitalService {
 
     private static final int NUM_OF_ROWS = 500;
-    @Value("${api.hospital.key}")
-    private static final String SERVICE_KEY = "serviceKey";
 
-    private HospitalClient hospitalClient;
-    private HospitalUpdater hospitalUpdater;
+    private final HospitalClient hospitalClient;
+    private final HospitalUpdater hospitalUpdater;
 
     public HospitalService(HospitalClient hospitalClient, HospitalUpdater hospitalUpdater) {
         this.hospitalClient = hospitalClient;
@@ -41,7 +39,6 @@ public class HospitalService {
 
     private HospitalRequest createHospitalRequest(int pageNo) {
         return HospitalRequest.builder()
-            .serviceKey(SERVICE_KEY)
             .numOfRows(NUM_OF_ROWS)
             .pageNo(pageNo)
             .build();

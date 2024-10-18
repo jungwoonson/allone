@@ -11,5 +11,4 @@ public class HospitalRequest {
 
     private int numOfRows;
     private int pageNo;
-    private String serviceKey;
 }
