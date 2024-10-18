@@ -13,7 +13,7 @@ public class HospitalScheduler {
         this.hospitalService = hospitalService;
     }
 
-    @Scheduled(cron = "0 40 13 * * ?")
+    @Scheduled(cron = "0 50 18 * * ?")
     public void syncHospitals() {
         hospitalService.syncHospitals();
     }

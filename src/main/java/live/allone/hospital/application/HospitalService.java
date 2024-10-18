@@ -27,7 +27,7 @@ public class HospitalService {
     }
 
     public void syncHospitals() {
-        HospitalResponse initialResponse = requestAndSaveHospitals(1);
+        HospitalResponse initialResponse = requestAndSaveHospitals(1263);
         int totalCount = initialResponse.getTotalCount();
         int totalPageLimit = calculateTotalPageLimit(totalCount);
 
