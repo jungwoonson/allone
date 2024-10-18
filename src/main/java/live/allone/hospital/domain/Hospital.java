@@ -46,9 +46,9 @@ public class Hospital {
     @Column(nullable = false)
     private LocalDateTime synchronizedAt;
 
-    @Column
+    @Column(length = 2000)
     private String description;
-    @Column
+    @Column(length = 2000)
     private String note;
     @Column
     private String sketchMap;
