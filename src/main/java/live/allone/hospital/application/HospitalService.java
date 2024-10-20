@@ -1,5 +1,6 @@
 package live.allone.hospital.application;
 
+import java.util.stream.IntStream;
 import live.allone.hospital.application.dto.HospitalRequest;
 import live.allone.hospital.application.dto.HospitalResponse;
 import org.apache.logging.log4j.LogManager;
@@ -12,8 +13,10 @@ import org.springframework.util.StopWatch;
 public class HospitalService {
 
     private static final Logger LOGGER = LogManager.getLogger(HospitalService.class);
-    public static final String ERROR_WHILE_SAVING_HOSPITALS = "Error while saving hospitals: ";
-    public static final String HOSPITAL_SYNC_STOPWATCH = "Hospital Sync Stopwatch";
+    private static final String ERROR_WHILE_SAVING_HOSPITALS = "Error while saving hospitals: ";
+    private static final String HOSPITAL_SYNC_STOPWATCH = "Hospital Sync Stopwatch";
+    private static final int MAX_REQUESTS = 100;
+    private static final int PAGE_OFFSET = 1;
 
     @Value("${hospital.request.num-of-rows}")
     private int NUM_OF_ROWS;
@@ -26,16 +29,14 @@ public class HospitalService {
         this.hospitalUpdater = hospitalUpdater;
     }
 
-    public void syncHospitals() {
-        HospitalResponse initialResponse = requestAndSaveHospitals(1263);
+    public void syncHospitals(int pageNo) {
+        HospitalResponse initialResponse = requestAndSaveHospitals(pageNo);
         int totalCount = initialResponse.getTotalCount();
         int totalPageLimit = calculateTotalPageLimit(totalCount);
 
-        for (int i = 1264; i < totalPageLimit; i++) {
-            requestAndSaveHospitals(i);
-        }
-
-        hospitalUpdater.deleteNotUpdatedHospitals();
+        int totalPagesToRequest = Math.min(totalPageLimit - pageNo - PAGE_OFFSET, MAX_REQUESTS);
+        IntStream.range(pageNo + PAGE_OFFSET, pageNo + PAGE_OFFSET + totalPagesToRequest)
+            .forEach(this::requestAndSaveHospitals);
     }
 
     private HospitalResponse requestAndSaveHospitals(int pageNo) {
