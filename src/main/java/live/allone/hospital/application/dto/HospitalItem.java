@@ -47,17 +47,15 @@ public class HospitalItem {
     private String wgs84Lon; // 병원경도
     private String wgs84Lat; // 병원위도
 
-    public Hospital createHospital(Long id) {
+    public Hospital createHospital() {
         return Hospital.builder()
-            .id(id)
             .hospitalId(hpid)
             .name(dutyName)
             .phoneNumber(dutyTel1)
             .address(dutyAddr)
             .typeCode(dutyDiv)
             .typeName(dutyDivNam)
-            .latitude(wgs84Lat)
-            .longitude(wgs84Lon)
+            .coordinates(wgs84Lon, wgs84Lat)
             .description(dutyInf)
             .note(dutyEtc)
             .sketchMap(dutyMapimg)

@@ -1,17 +1,14 @@
 package live.allone.hospital.domain;
 
 import jakarta.persistence.Column;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @EqualsAndHashCode
 @ToString
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 public class OperatingHour {
 
     @Column
@@ -46,7 +43,4 @@ public class OperatingHour {
     private String holidayOpen;
     @Column
     private String holidayClose;
-
-    public OperatingHour() {
-    }
 }

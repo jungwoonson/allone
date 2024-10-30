@@ -1,26 +1,26 @@
 package live.allone.hospital.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.PrePersist;
-import java.time.LocalDateTime;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
+import org.hibernate.proxy.HibernateProxy;
+import org.locationtech.jts.geom.Coordinate;
+import org.locationtech.jts.geom.GeometryFactory;
+import org.locationtech.jts.geom.Point;
+
+import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 @Getter
-@EqualsAndHashCode
 @ToString
 @Builder
 @AllArgsConstructor
 public class Hospital {
+
+    private static final GeometryFactory GEOMETRY_FACTORY = new GeometryFactory();
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,10 +42,8 @@ public class Hospital {
     @Column(nullable = false)
     private LocalDateTime synchronizedAt;
 
-    @Column(length = 30)
-    private String latitude;
-    @Column(length = 30)
-    private String longitude;
+    @Column(columnDefinition = "geometry(Point, 4326)")
+    private Point coordinates;
     @Column(length = 2000)
     private String description;
     @Column(length = 2000)
@@ -77,8 +75,6 @@ public class Hospital {
         this.address = hospital.getAddress();
         this.typeCode = hospital.getTypeCode();
         this.typeName = hospital.getTypeName();
-        this.latitude = hospital.getLatitude();
-        this.longitude = hospital.getLongitude();
         this.description = hospital.getDescription();
         this.note = hospital.getNote();
         this.sketchMap = hospital.getSketchMap();
@@ -87,5 +83,61 @@ public class Hospital {
         this.emergency = hospital.getEmergency();
         this.operatingHour = hospital.getOperatingHour();
         this.synchronizedAt = LocalDateTime.now();
+        this.coordinates = hospital.getCoordinates();
+    }
+
+    @Override
+    public final boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null) {
+            return false;
+        }
+        Class<?> oEffectiveClass = o.getClass();
+        if (o instanceof HibernateProxy) {
+            oEffectiveClass = ((HibernateProxy) o)
+                    .getHibernateLazyInitializer()
+                    .getPersistentClass();
+        }
+        Class<?> thisEffectiveClass = this.getClass();
+        if (this instanceof HibernateProxy) {
+            thisEffectiveClass = ((HibernateProxy) this)
+                    .getHibernateLazyInitializer()
+                    .getPersistentClass();
+        }
+        if (thisEffectiveClass != oEffectiveClass) {
+            return false;
+        }
+        Hospital hospital = (Hospital) o;
+        return getId() != null && Objects.equals(getId(), hospital.getId());
+    }
+
+    @Override
+    public final int hashCode() {
+        int hashCode = getClass()
+                .hashCode();
+        if (this instanceof HibernateProxy) {
+            hashCode = ((HibernateProxy) this)
+                    .getHibernateLazyInitializer()
+                    .getPersistentClass()
+                    .hashCode();
+        }
+        return hashCode;
+    }
+
+    public static class HospitalBuilder {
+        public HospitalBuilder coordinates(String longitude, String latitude) {
+            if (latitude == null || longitude == null) {
+                return this;
+            }
+            return coordinates(Double.parseDouble(longitude), Double.parseDouble(latitude));
+        }
+
+        public HospitalBuilder coordinates(double longitude, double latitude) {
+            Coordinate coordinate = new Coordinate(longitude, latitude);
+            this.coordinates = GEOMETRY_FACTORY.createPoint(coordinate);
+            return this;
+        }
     }
 }
