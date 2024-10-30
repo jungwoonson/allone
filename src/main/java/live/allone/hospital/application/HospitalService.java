@@ -32,12 +32,12 @@ public class HospitalService {
     }
 
     public void syncHospitals(int pageNo) {
-        HospitalResponse initialResponse = requestAndSaveHospitals(pageNo);
+        HospitalResponse initialResponse = hospitalClient.requestHospitals(createHospitalRequest(pageNo));
         int totalCount = initialResponse.getTotalCount();
         int totalPageLimit = calculateTotalPageLimit(totalCount);
 
-        int totalPagesToRequest = Math.min(totalPageLimit - pageNo - PAGE_OFFSET, MAX_REQUESTS);
-        IntStream.range(pageNo + PAGE_OFFSET, pageNo + PAGE_OFFSET + totalPagesToRequest)
+        int pageLimitToRequest = Math.min(totalPageLimit, MAX_REQUESTS + pageNo);
+        IntStream.range(pageNo, pageLimitToRequest)
             .forEach(this::requestAndSaveHospitals);
     }
 

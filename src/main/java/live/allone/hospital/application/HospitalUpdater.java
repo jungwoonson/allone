@@ -11,6 +11,7 @@ import live.allone.hospital.domain.Hospital;
 import live.allone.hospital.domain.HospitalRepository;
 import live.allone.hospital.domain.OperatingHour;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
@@ -22,7 +23,7 @@ public class HospitalUpdater {
         this.hospitalRepository = hospitalRepository;
     }
 
-    @Transactional
+    @Transactional(isolation = Isolation.READ_UNCOMMITTED)
     public void saveAll(List<HospitalItem> hospitals) {
         List<Hospital> savedHospitals = new ArrayList<>();
         for (HospitalItem item : hospitals) {

@@ -38,14 +38,14 @@ public class Hospital {
     @Column(nullable = false)
     private String typeName;
     @Column(nullable = false)
-    private String latitude;
-    @Column(nullable = false)
-    private String longitude;
-    @Column(nullable = false)
     private LocalDateTime createdAt;
     @Column(nullable = false)
     private LocalDateTime synchronizedAt;
 
+    @Column(length = 30)
+    private String latitude;
+    @Column(length = 30)
+    private String longitude;
     @Column(length = 2000)
     private String description;
     @Column(length = 2000)
