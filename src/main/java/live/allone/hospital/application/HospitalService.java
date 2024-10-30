@@ -15,8 +15,10 @@ public class HospitalService {
     private static final Logger LOGGER = LogManager.getLogger(HospitalService.class);
     private static final String ERROR_WHILE_SAVING_HOSPITALS = "Error while saving hospitals: ";
     private static final String HOSPITAL_SYNC_STOPWATCH = "Hospital Sync Stopwatch";
-    private static final int MAX_REQUESTS = 100;
     private static final int PAGE_OFFSET = 1;
+
+    @Value("${hospital.request.max}")
+    private int MAX_REQUESTS;
 
     @Value("${hospital.request.num-of-rows}")
     private int NUM_OF_ROWS;
