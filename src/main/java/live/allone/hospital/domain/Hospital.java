@@ -96,34 +96,29 @@ public class Hospital {
         }
         Class<?> oEffectiveClass = o.getClass();
         if (o instanceof HibernateProxy) {
-            oEffectiveClass = ((HibernateProxy) o)
-                    .getHibernateLazyInitializer()
-                    .getPersistentClass();
+            ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass();
         }
         Class<?> thisEffectiveClass = this.getClass();
         if (this instanceof HibernateProxy) {
-            thisEffectiveClass = ((HibernateProxy) this)
-                    .getHibernateLazyInitializer()
-                    .getPersistentClass();
+            ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass();
         }
         if (thisEffectiveClass != oEffectiveClass) {
             return false;
         }
         Hospital hospital = (Hospital) o;
-        return getId() != null && Objects.equals(getId(), hospital.getId());
+        return Objects.equals(getId(), hospital.getId())
+                && Objects.equals(getHospitalId(), hospital.getHospitalId());
     }
 
     @Override
     public final int hashCode() {
-        int hashCode = getClass()
-                .hashCode();
         if (this instanceof HibernateProxy) {
-            hashCode = ((HibernateProxy) this)
+            return ((HibernateProxy) this)
                     .getHibernateLazyInitializer()
                     .getPersistentClass()
                     .hashCode();
         }
-        return hashCode;
+        return Objects.hash(id, hospitalId);
     }
 
     public static class HospitalBuilder {
