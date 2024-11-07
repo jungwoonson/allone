@@ -10,7 +10,7 @@ import lombok.ToString;
 @Data
 @NoArgsConstructor
 @ToString
-public class HospitalItem {
+public class HospitalSyncItem {
 
     private String rnum; // 일련번호
     private String dutyAddr; // 주소

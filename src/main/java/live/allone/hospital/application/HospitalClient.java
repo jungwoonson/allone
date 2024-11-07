@@ -5,8 +5,8 @@ import static org.springframework.http.HttpHeaders.ACCEPT;
 import java.net.URI;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import live.allone.hospital.application.dto.HospitalRequest;
-import live.allone.hospital.application.dto.HospitalResponse;
+import live.allone.hospital.application.dto.HospitalSyncRequest;
+import live.allone.hospital.application.dto.HospitalSyncResponse;
 import lombok.SneakyThrows;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -36,54 +36,54 @@ public class HospitalClient {
     @Value("${api.hospital.key}")
     private String serviceKey;
 
-    public HospitalResponse requestHospitals(HospitalRequest hospitalRequest) {
+    public HospitalSyncResponse requestHospitals(HospitalSyncRequest hospitalSyncRequest) {
         HttpHeaders headers = new HttpHeaders();
         headers.add(ACCEPT, MediaType.APPLICATION_XML_VALUE);
 
-        HttpEntity<HospitalRequest> httpEntity = new HttpEntity<>(headers);
+        HttpEntity<HospitalSyncRequest> httpEntity = new HttpEntity<>(headers);
 
         String serviceKeyEncoded = URLEncoder.encode(serviceKey, StandardCharsets.UTF_8);
 
         URI uri = UriComponentsBuilder.fromHttpUrl(fullDownUrl)
-            .queryParam(NUM_OF_ROWS, hospitalRequest.getNumOfRows())
-            .queryParam(PAGE_NO, hospitalRequest.getPageNo())
+            .queryParam(NUM_OF_ROWS, hospitalSyncRequest.getNumOfRows())
+            .queryParam(PAGE_NO, hospitalSyncRequest.getPageNo())
             .queryParam(SERVICE_KEY, serviceKeyEncoded)
             .build(true)
             .toUri();
 
-        ResponseEntity<HospitalResponse> response = requestHospitals(uri, httpEntity,
-            hospitalRequest);
+        ResponseEntity<HospitalSyncResponse> response = requestHospitals(uri, httpEntity,
+            hospitalSyncRequest);
 
         return response.getBody();
     }
 
-    private ResponseEntity<HospitalResponse> requestHospitals(URI uri,
-        HttpEntity<HospitalRequest> httpEntity, HospitalRequest hospitalRequest) {
+    private ResponseEntity<HospitalSyncResponse> requestHospitals(URI uri,
+        HttpEntity<HospitalSyncRequest> httpEntity, HospitalSyncRequest hospitalSyncRequest) {
         RestTemplate restTemplate = new RestTemplate();
 
         for (int attempt = 1; attempt <= MAX_RETRIES; attempt++) {
-            ResponseEntity<HospitalResponse> response = sendRequest(restTemplate, uri, httpEntity);
+            ResponseEntity<HospitalSyncResponse> response = sendRequest(restTemplate, uri, httpEntity);
             if (isSuccessfulResponse(response)) {
                 return response;
             }
             threadSleep();
         }
 
-        throw new RequestHospitalException(hospitalRequest);
+        throw new RequestHospitalException(hospitalSyncRequest);
     }
 
-    private ResponseEntity<HospitalResponse> sendRequest(RestTemplate restTemplate, URI uri, HttpEntity<HospitalRequest> httpEntity) {
+    private ResponseEntity<HospitalSyncResponse> sendRequest(RestTemplate restTemplate, URI uri, HttpEntity<HospitalSyncRequest> httpEntity) {
         try {
-            return restTemplate.exchange(uri, HttpMethod.GET, httpEntity, HospitalResponse.class);
+            return restTemplate.exchange(uri, HttpMethod.GET, httpEntity, HospitalSyncResponse.class);
         } catch (RestClientException e) {
             LOGGER.info(e.getMessage());
             return null;
         }
     }
 
-    private boolean isSuccessfulResponse(ResponseEntity<HospitalResponse> response) {
-        HospitalResponse hospitalResponse = response.getBody();
-        return hospitalResponse != null && hospitalResponse.getBody() != null;
+    private boolean isSuccessfulResponse(ResponseEntity<HospitalSyncResponse> response) {
+        HospitalSyncResponse hospitalSyncResponse = response.getBody();
+        return hospitalSyncResponse != null && hospitalSyncResponse.getBody() != null;
     }
 
     @SneakyThrows

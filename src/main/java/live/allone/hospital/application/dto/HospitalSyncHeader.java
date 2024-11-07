@@ -7,7 +7,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class HospitalHeader {
+public class HospitalSyncHeader {
 
     private String resultCode;
     private String resultMsg;

@@ -9,10 +9,10 @@ import lombok.ToString;
 @Data
 @NoArgsConstructor
 @ToString
-public class HospitalBody {
+public class HospitalSyncBody {
 
     private int numOfRows;
     private int pageNo;
     private int totalCount;
-    private List<HospitalItem> items;
+    private List<HospitalSyncItem> items;
 }

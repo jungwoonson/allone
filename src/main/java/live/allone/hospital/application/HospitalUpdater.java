@@ -1,6 +1,6 @@
 package live.allone.hospital.application;
 
-import live.allone.hospital.application.dto.HospitalItem;
+import live.allone.hospital.application.dto.HospitalSyncItem;
 import live.allone.hospital.domain.Hospital;
 import live.allone.hospital.domain.HospitalRepository;
 import org.springframework.stereotype.Service;
@@ -23,16 +23,16 @@ public class HospitalUpdater {
     }
 
     @Transactional(isolation = Isolation.READ_UNCOMMITTED)
-    public void saveAll(List<HospitalItem> hospitals) {
+    public void saveAll(List<HospitalSyncItem> hospitals) {
         List<Hospital> savedHospitals = new ArrayList<>();
-        for (HospitalItem item : hospitals) {
+        for (HospitalSyncItem item : hospitals) {
             Optional<Hospital> existingHospital = hospitalRepository.findByHospitalId(item.getHpid());
             savedHospitals.add(getHospitalForUpdate(item, existingHospital));
         }
         hospitalRepository.saveAll(savedHospitals);
     }
 
-    private Hospital getHospitalForUpdate(HospitalItem item, Optional<Hospital> existingHospital) {
+    private Hospital getHospitalForUpdate(HospitalSyncItem item, Optional<Hospital> existingHospital) {
         if (existingHospital.isPresent()) {
             Hospital existing = existingHospital.get();
             existing.updateAll(item.createHospital());

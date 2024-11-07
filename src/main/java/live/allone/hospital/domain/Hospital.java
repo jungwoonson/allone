@@ -20,6 +20,7 @@ import java.util.Objects;
 @AllArgsConstructor
 public class Hospital {
 
+    private static final double EARTH_RADIUS = 6371.00877;
     private static final GeometryFactory GEOMETRY_FACTORY = new GeometryFactory();
 
     @Id
@@ -86,6 +87,24 @@ public class Hospital {
         this.coordinates = hospital.getCoordinates();
     }
 
+    public int compareTo(Hospital other, Point referencePoint) {
+        double thisDistance = getDistanceTo(this.getCoordinates(), referencePoint);
+        double otherDistance = getDistanceTo(other.getCoordinates(), referencePoint);
+        return Double.compare(thisDistance, otherDistance);
+    }
+
+    private double getDistanceTo(Point source, Point target) {
+        return source.distance(target);
+    }
+
+    public double getLongitude() {
+        return coordinates.getX();
+    }
+
+    public double getLatitude() {
+        return coordinates.getY();
+    }
+
     @Override
     public final boolean equals(Object o) {
         if (this == o) {
@@ -119,6 +138,27 @@ public class Hospital {
                     .hashCode();
         }
         return Objects.hash(id, hospitalId);
+    }
+
+    public int calculateDistance(Hospital target) {
+        double lon1 = getLongitude();
+        double lat1 = getLatitude();
+        double lon2 = target.getLongitude();
+        double lat2 = target.getLatitude();
+
+        double radius = 6371000;
+        double toRadian = Math.PI / 180;
+
+        double deltaLatitude = Math.abs(lon1 - lon2) * toRadian;
+        double deltaLongitude = Math.abs(lat1 - lat2) * toRadian;
+
+        double sinDeltaLat = Math.sin(deltaLatitude / 2);
+        double sinDeltaLng = Math.sin(deltaLongitude / 2);
+        double squareRoot = Math.sqrt(
+            sinDeltaLat * sinDeltaLat + Math.cos(lon1 * toRadian) * Math.cos(lon2 * toRadian)
+                * sinDeltaLng * sinDeltaLng);
+
+        return (int) Math.round(2 * radius * Math.asin(squareRoot)) ;
     }
 
     public static class HospitalBuilder {

@@ -43,4 +43,6 @@ public class OperatingHour {
     private String holidayOpen;
     @Column
     private String holidayClose;
+
+
 }

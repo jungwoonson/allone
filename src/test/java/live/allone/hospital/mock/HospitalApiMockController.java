@@ -1,6 +1,6 @@
 package live.allone.hospital.mock;
 
-import live.allone.hospital.application.dto.HospitalRequest;
+import live.allone.hospital.application.dto.HospitalSyncRequest;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -21,7 +21,7 @@ import java.nio.file.Path;
 public class HospitalApiMockController {
 
     @GetMapping(value = "/B552657/HsptlAsembySearchService/getHsptlMdcncFullDown", produces = "application/xml")
-    public ResponseEntity<byte[]> getHsptlMdcncFullDown(@ModelAttribute HospitalRequest request, @RequestParam String serviceKey) throws IOException {
+    public ResponseEntity<byte[]> getHsptlMdcncFullDown(@ModelAttribute HospitalSyncRequest request, @RequestParam String serviceKey) throws IOException {
         if (!StringUtils.hasText(serviceKey)) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
