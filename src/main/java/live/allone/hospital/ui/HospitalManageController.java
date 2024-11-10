@@ -1,6 +1,5 @@
 package live.allone.hospital.ui;
 
-import io.swagger.v3.oas.annotations.Operation;
 import live.allone.hospital.application.HospitalService;
 import live.allone.hospital.application.dto.HospitalRequest;
 import live.allone.hospital.application.dto.HospitalResponse;
@@ -13,17 +12,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class HospitalController {
+public class HospitalManageController {
 
     private final HospitalService hospitalService;
 
-    public HospitalController(HospitalService hospitalService) {
+    public HospitalManageController(HospitalService hospitalService) {
         this.hospitalService = hospitalService;
     }
 
-    @Operation(summary = "병원 목록 조회", description = "위경도 기준으로 병원 목록을 조회합니다.")
-    @GetMapping("/hospital")
-    public ResponseEntity<PagingResponse<HospitalResponse>> getHospitals(@ModelAttribute HospitalRequest hospitalRequest) {
-        return ResponseEntity.ok(hospitalService.findHospitals(hospitalRequest));
+    @PatchMapping("/manage/hospital/sync")
+    public String syncHospitals(@RequestParam int pageNo) {
+        hospitalService.syncHospitals(pageNo);
+        return "Sync hospitals";
     }
 }

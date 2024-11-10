@@ -22,7 +22,7 @@ public interface HospitalRepository extends JpaRepository<Hospital, Long> {
 
     @Query(value = "SELECT *, " +
         "ST_Distance(coordinates, ST_SetSRID(ST_MakePoint(:longitude, :latitude), 4326)) AS distance " +
-        "FROM hospital" +
+        "FROM hospital " +
         "ORDER BY distance ASC " +
         "LIMIT :pageSize OFFSET :pageOffset",
         nativeQuery = true)

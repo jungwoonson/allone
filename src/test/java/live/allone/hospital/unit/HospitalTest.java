@@ -59,13 +59,10 @@ public class HospitalTest {
         Hospital source = Hospital.builder()
             .coordinates(126.978526, 37.566510)
             .build();
-        Hospital target = Hospital.builder()
-            .coordinates(126.979337, 37.565880)
-            .build();
         int meter100 = 100;
 
         // when
-        int distance = source.calculateDistance(target);
+        int distance = source.calculateDistance(126.979337, 37.565880);
 
         // then
         assertThat(distance).isEqualTo(meter100);

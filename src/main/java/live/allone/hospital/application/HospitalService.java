@@ -1,14 +1,19 @@
 package live.allone.hospital.application;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.IntStream;
 import live.allone.hospital.application.dto.HospitalRequest;
 import live.allone.hospital.application.dto.HospitalResponse;
 import live.allone.hospital.application.dto.HospitalSyncRequest;
 import live.allone.hospital.application.dto.HospitalSyncResponse;
+import live.allone.hospital.application.dto.WeeklySchedule;
+import live.allone.hospital.domain.Hospital;
 import live.allone.hospital.domain.HospitalRepository;
 import live.allone.utils.PagingResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.locationtech.jts.geom.Point;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -80,6 +85,38 @@ public class HospitalService {
 
     @Transactional(readOnly = true)
     public PagingResponse<HospitalResponse> findHospitals(HospitalRequest hospitalRequest) {
-        return null;
+        List<Hospital> hospitals = hospitalRepository.findHospitalsByProximity(
+            hospitalRequest.getLongitude(), hospitalRequest.getLatitude(),
+            hospitalRequest.getPage() - 1, hospitalRequest.getSize());
+
+        int count = (int) hospitalRepository.count();
+        List<HospitalResponse> hospitalResponses = createHospitalResponses(hospitals, hospitalRequest);
+
+        return PagingResponse.<HospitalResponse>builder()
+            .data(hospitalResponses)
+            .page(hospitalRequest.getPage())
+            .size(hospitals.size())
+            .total(count)
+            .build();
+    }
+
+    private List<HospitalResponse> createHospitalResponses(List<Hospital> hospitals, HospitalRequest hospitalRequest) {
+        return hospitals.stream()
+            .map(it -> createHospitalResponse(it, hospitalRequest))
+            .toList();
+    }
+
+    private HospitalResponse createHospitalResponse(Hospital hospital, HospitalRequest hospitalRequest) {
+        return HospitalResponse.builder()
+            .id(hospital.getId())
+            .hospitalId(hospital.getHospitalId())
+            .name(hospital.getName())
+            .address(hospital.getAddress())
+            .phoneNumber(hospital.getPhoneNumber())
+            .longitude(hospital.getLongitude())
+            .latitude(hospital.getLatitude())
+            .distance(hospital.calculateDistance(hospitalRequest.getLongitude(), hospitalRequest.getLatitude()))
+            .weeklySchedules(hospital.operatingHour())
+            .build();
     }
 }

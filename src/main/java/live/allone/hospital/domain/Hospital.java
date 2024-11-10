@@ -97,6 +97,29 @@ public class Hospital {
         return source.distance(target);
     }
 
+    public int calculateDistance(double targetLon, double targetLat) {
+        double lon1 = getLongitude();
+        double lat1 = getLatitude();
+
+        double radius = 6371000;
+        double toRadian = Math.PI / 180;
+
+        double deltaLatitude = Math.abs(lon1 - targetLon) * toRadian;
+        double deltaLongitude = Math.abs(lat1 - targetLat) * toRadian;
+
+        double sinDeltaLat = Math.sin(deltaLatitude / 2);
+        double sinDeltaLng = Math.sin(deltaLongitude / 2);
+        double squareRoot = Math.sqrt(
+            sinDeltaLat * sinDeltaLat + Math.cos(lon1 * toRadian) * Math.cos(targetLon * toRadian)
+                * sinDeltaLng * sinDeltaLng);
+
+        return (int) Math.round(2 * radius * Math.asin(squareRoot)) ;
+    }
+
+    public OperatingHour operatingHour() {
+        return operatingHour;
+    }
+
     public double getLongitude() {
         return coordinates.getX();
     }
@@ -138,27 +161,6 @@ public class Hospital {
                     .hashCode();
         }
         return Objects.hash(id, hospitalId);
-    }
-
-    public int calculateDistance(Hospital target) {
-        double lon1 = getLongitude();
-        double lat1 = getLatitude();
-        double lon2 = target.getLongitude();
-        double lat2 = target.getLatitude();
-
-        double radius = 6371000;
-        double toRadian = Math.PI / 180;
-
-        double deltaLatitude = Math.abs(lon1 - lon2) * toRadian;
-        double deltaLongitude = Math.abs(lat1 - lat2) * toRadian;
-
-        double sinDeltaLat = Math.sin(deltaLatitude / 2);
-        double sinDeltaLng = Math.sin(deltaLongitude / 2);
-        double squareRoot = Math.sqrt(
-            sinDeltaLat * sinDeltaLat + Math.cos(lon1 * toRadian) * Math.cos(lon2 * toRadian)
-                * sinDeltaLng * sinDeltaLng);
-
-        return (int) Math.round(2 * radius * Math.asin(squareRoot)) ;
     }
 
     public static class HospitalBuilder {
