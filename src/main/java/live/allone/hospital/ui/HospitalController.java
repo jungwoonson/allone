@@ -21,7 +21,7 @@ public class HospitalController {
         this.hospitalService = hospitalService;
     }
 
-    @Operation(summary = "병원 목록 조회", description = "위경도 기준으로 병원 목록을 조회합니다.")
+    @Operation(summary = "병원 목록 조회", description = "경도, 위도 기준으로 병원 목록을 조회합니다.")
     @GetMapping("/hospital")
     public ResponseEntity<PagingResponse<HospitalResponse>> getHospitals(@ModelAttribute HospitalRequest hospitalRequest) {
         return ResponseEntity.ok(hospitalService.findHospitals(hospitalRequest));
