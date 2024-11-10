@@ -11,19 +11,11 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SwaggerConfig {
 
-    @Value("domain")
-    private String domain;
-
     @Bean
     public OpenAPI openAPI() {
-
-        Server server = new Server();
-        server.setUrl(domain);
-
         return new OpenAPI()
                 .components(new Components())
-                .info(apiInfo())
-                .addServersItem(server);
+                .info(apiInfo());
     }
 
     private Info apiInfo() {
