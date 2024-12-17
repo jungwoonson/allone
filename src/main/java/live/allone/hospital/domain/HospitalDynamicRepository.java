@@ -65,7 +65,7 @@ public class HospitalDynamicRepository {
         sql.append(" ORDER BY distance ASC");
         sql.append(" LIMIT ? OFFSET ?");
         paramList.add(request.getSize());
-        paramList.add(request.getPage() - 1);
+        paramList.add((request.getPage() - 1) * request.getSize());
 
         String string = sql.toString();
 

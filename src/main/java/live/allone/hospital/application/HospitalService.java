@@ -37,7 +37,8 @@ public class HospitalService {
     private final HospitalRepository hospitalRepository;
     private final HospitalDynamicRepository hospitalDynamicRepository;
 
-    public HospitalService(HospitalClient hospitalClient, HospitalUpdater hospitalUpdater, HospitalRepository hospitalRepository, HospitalDynamicRepository hospitalDynamicRepository) {
+    public HospitalService(HospitalClient hospitalClient, HospitalUpdater hospitalUpdater,
+                           HospitalRepository hospitalRepository, HospitalDynamicRepository hospitalDynamicRepository) {
         this.hospitalClient = hospitalClient;
         this.hospitalUpdater = hospitalUpdater;
         this.hospitalRepository = hospitalRepository;
@@ -88,7 +89,7 @@ public class HospitalService {
     public PagingResponse<HospitalResponse> findHospitals(HospitalRequest hospitalRequest) {
         List<Hospital> hospitals = hospitalDynamicRepository.findHospitals(hospitalRequest);
 
-        int count = (int) hospitalDynamicRepository.count(hospitalRequest);
+        int count = hospitalDynamicRepository.count(hospitalRequest);
         List<HospitalResponse> hospitalResponses = createHospitalResponses(hospitals, hospitalRequest);
 
         return PagingResponse.<HospitalResponse>builder()
