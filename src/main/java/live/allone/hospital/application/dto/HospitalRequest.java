@@ -1,14 +1,10 @@
 package live.allone.hospital.application.dto;
 
-import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
-
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Min;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
+
+import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 
 @Getter
 @Setter
@@ -22,6 +18,8 @@ public class HospitalRequest {
     private Double longitude;
     @Schema(description = "위도", example = "37.566535", requiredMode = REQUIRED)
     private Double latitude;
+    @Schema(description = "병원명", example = "아산 병원")
+    private String name;
     @Schema(description = "페이지", example = "1", minimum = "1", requiredMode = REQUIRED)
     @Min(1)
     private int page;

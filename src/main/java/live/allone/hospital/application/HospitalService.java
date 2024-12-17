@@ -1,23 +1,22 @@
 package live.allone.hospital.application;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.IntStream;
 import live.allone.hospital.application.dto.HospitalRequest;
 import live.allone.hospital.application.dto.HospitalResponse;
 import live.allone.hospital.application.dto.HospitalSyncRequest;
 import live.allone.hospital.application.dto.HospitalSyncResponse;
-import live.allone.hospital.application.dto.WeeklySchedule;
 import live.allone.hospital.domain.Hospital;
+import live.allone.hospital.domain.HospitalDynamicRepository;
 import live.allone.hospital.domain.HospitalRepository;
 import live.allone.utils.PagingResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.locationtech.jts.geom.Point;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StopWatch;
+
+import java.util.List;
+import java.util.stream.IntStream;
 
 @Service
 public class HospitalService {
@@ -36,11 +35,13 @@ public class HospitalService {
     private final HospitalClient hospitalClient;
     private final HospitalUpdater hospitalUpdater;
     private final HospitalRepository hospitalRepository;
+    private final HospitalDynamicRepository hospitalDynamicRepository;
 
-    public HospitalService(HospitalClient hospitalClient, HospitalUpdater hospitalUpdater, HospitalRepository hospitalRepository) {
+    public HospitalService(HospitalClient hospitalClient, HospitalUpdater hospitalUpdater, HospitalRepository hospitalRepository, HospitalDynamicRepository hospitalDynamicRepository) {
         this.hospitalClient = hospitalClient;
         this.hospitalUpdater = hospitalUpdater;
         this.hospitalRepository = hospitalRepository;
+        this.hospitalDynamicRepository = hospitalDynamicRepository;
     }
 
     public void syncHospitals(int pageNo) {
@@ -85,11 +86,9 @@ public class HospitalService {
 
     @Transactional(readOnly = true)
     public PagingResponse<HospitalResponse> findHospitals(HospitalRequest hospitalRequest) {
-        List<Hospital> hospitals = hospitalRepository.findHospitalsByProximity(
-            hospitalRequest.getLongitude(), hospitalRequest.getLatitude(),
-            hospitalRequest.getPage() - 1, hospitalRequest.getSize());
+        List<Hospital> hospitals = hospitalDynamicRepository.findHospitals(hospitalRequest);
 
-        int count = (int) hospitalRepository.count();
+        int count = (int) hospitalDynamicRepository.count(hospitalRequest);
         List<HospitalResponse> hospitalResponses = createHospitalResponses(hospitals, hospitalRequest);
 
         return PagingResponse.<HospitalResponse>builder()

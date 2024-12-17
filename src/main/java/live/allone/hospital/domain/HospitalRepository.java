@@ -29,6 +29,6 @@ public interface HospitalRepository extends JpaRepository<Hospital, Long> {
     List<Hospital> findHospitalsByProximity(
         @Param("longitude") double longitude,
         @Param("latitude") double latitude,
-        @Param("pageOffset") int pageOffset,
-        @Param("pageSize") int size);
+        @Param("pageSize") int size,
+        @Param("pageOffset") int pageOffset);
 }
